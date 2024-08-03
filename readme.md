@@ -1,22 +1,21 @@
-# Deep Learning Enabled Semantic Communication Systems
+# KANSC
+
+<center>Zifan Zhu, Computer Science of Western University</center>
+
+KAN integration of Deep Learning Enabled Semantic Communication Systems
+
+## DeepSC author:
 
 <center>Huiqiang Xie, Zhijin Qin, Geoffrey Ye Li, and Biing-Hwang Juang </center>
 
-This is the implementation of  Deep learning enabled semantic communication systems.
-
 ## Requirements
-+ See the `requirements.txt` for the required python packages and run `pip install -r requirements.txt` to install them.
 
-## Bibtex
-```bitex
-@article{xie2021deep,
-  author={H. {Xie} and Z. {Qin} and G. Y. {Li} and B. -H. {Juang}},
-  journal={IEEE Transactions on Signal Processing}, 
-  title={Deep Learning Enabled Semantic Communication Systems}, 
-  year={2021},
-  volume={Early Access}}
-```
+- Refer to readme of [this](https://github.com/KindXiaoming/pykan) repository for setting up Pykan environment
+
+- See the `requirements.txt` for the required python packages for original DeepSC and run `pip install -r requirements.txt` to install them.
+
 ## Preprocess
+
 ```shell
 mkdir data
 wget http://www.statmt.org/europarl/v7/europarl.tgz
@@ -25,16 +24,37 @@ python preprocess_text.py
 ```
 
 ## Train
+
+- For training KANSC model
+
 ```shell
-python main.py 
+python main_kan.py
 ```
-### Notes
-+ Please carefully set the $\lambda$ of mutual information part since I have tested the model in different platform, 
-i.e., Tensorflow and Pytorch, same $\lambda$ shows different performance.  
+
+- For training DeepSC model
+
+```shell
+python main.py
+```
 
 ## Evaluation
-```shell
-python performance.py
+
+Check `kan_sc_performance.ipynb` file for evaluation of KANSC model
+Check `performance.ipynb` file for evaluation of DeepSC model
+
+## Notes
+
+- The Integrated version only focuses on evaluating the BLEU score performance vs. different SNR over AWGN and Rayleigh Fading Channel
+
+- The `efficient_kan` implementation of `KAN` layer is from [this](https://github.com/Blealtan/efficient-kan) repository
+
+## Bibtex
+
+```bitex
+@article{xie2021deep,
+  author={H. {Xie} and Z. {Qin} and G. Y. {Li} and B. -H. {Juang}},
+  journal={IEEE Transactions on Signal Processing},
+  title={Deep Learning Enabled Semantic Communication Systems},
+  year={2021},
+  volume={Early Access}}
 ```
-### Notes
-+ If you want to compute the sentence similarity, please download the bert model.
